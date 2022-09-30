@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://pgptool.org/ -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div class="title">
+        <title>ENCODE / DECODE</title>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cometbeetle/PGPSite/bootstrap2.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cometbeetle/PGPSite/custom2.css" media="screen">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cometbeetle/PGPSite/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cometbeetle/PGPSite/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cometbeetle/PGPSite/kbpgp.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cometbeetle/PGPSite/FileSaver.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cometbeetle/PGPSite/pgpkeygen.js"></script>
+
+    <!--[if IE 9]>
+        <script type="text/javascript" src="index_files/js/placeholder.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cometbeetle/PGPSite/script.js"></script>
+
+
+
+    <div id="filename_temp" style="display:none;" title="This is temp div for saving here a file name if file was been loaded by input.">pgp-message</div>
+    <!--status notification-->
+    <div class="hidden">
+        <div class="alert alert-success fade in" id="vrSuccess">
+            <button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button><span id="vrAddrLabel"></span>
+        </div>
+        <div class="alert alert-danger fade in" id="vrError">
+            <button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button><span id="vrAddrLabel"></span>
+        </div>
+        <div class="alert alert-warning fade in" id="vrWarning">
+            <button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button><span id="vrAddrLabel"></span>
+        </div>
+    </div>
+                <div class="page-header">
+                    <h1 class="title">PGP Message Verifier</h1>
+                </div>
+                <div class="tabbable">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+
+                        <!-- Verify signed message -->
+                        <div role="tabpanel" class="tab-pane active" id="verify">
+                            <div class="row generator">
+                                <div class="col-md-5">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Public Key</h3>
+                                        </div>
+                                        <div class="panel-body" title="Signed using private key and verified using public key.">
+                                            <textarea class="form-control message" id="Signer-public-key" rows="7" placeholder="Paste public key here." >
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Comment: DEFCON PUBLIC KEY
+Location: pubkey.defconstatus.cf
+Version: Hockeypuck 2.1.0-181-ga90ac77
+
+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
+ZFEqRWRet1GqZCWCR7Bm
+=L4QB
+-----END PGP PUBLIC KEY BLOCK-----
+                                            </textarea>
+                                            <input type="file" onchange="openFile(event, &quot;Signer-public-key&quot;)"><br>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-7">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">PGP-signed Message</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <textarea class="form-control message" rows="7" id="Unverified-plain-text" placeholder="Paste PGP-signed message here."></textarea>
+                                            <input type="file" onchange="openFile(event, &quot;Unverified-plain-text&quot;)"><br>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-primary" id="verify-signature">Verify signature</button>
+                                    <br>
+                                    <br>
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Raw Message</h3>
+                                        </div>
+                                        <div id="vrAlert"></div>
+                                        <div class="panel-body">
+                                            <textarea class="form-control message" rows="7" id="pure-text" placeholder="Message will display here if valid." readonly=""></textarea>
+                                            <br>
+                                            <a id="download_verified_as_binary" style="display:none; float: right" href="javascript:void(0);">
+                                                Download as binary
+                                            </a>
+                                            <a id="download-pure-text" style="display:none;" href="javascript:void(0);">
+                                                <button class="btn btn-secondary">Download message</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+</body>
+</html>
